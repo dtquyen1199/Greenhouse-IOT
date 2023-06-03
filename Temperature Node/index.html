@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<h1 align="center"; style="color: green">Greenhouse control system</h1><br>
+<h2 align="center">Current room temperature and humidity levels:</h3>
+<h2 align="center"> Last Update: {{lastDataTime}}</h2>
+<h3 align="center">Temperature: {{lastTemperature}}&deg;C </h3>
+<h3 align="center">Humidity: {{lastHumidity}}%</h3>
+
+
+<h2>Actuators</h2>
+	{% for pin in pins %}
+		<h3> {{pins[pin].name}}
+		{% if pins[pin].state == 1 %}
+			Status: <strong> on </strong>
+			<button><a href="/{{pin}}/off" style="color: red" class "button1" role="button">Turn off</a></button>
+		{% else %}
+			Status: <strong> off </strong></h2>
+			<button><a href="/{{pin}}/on" style="color: green" class "button2" role="button">Turn on</a></button></h3>
+			<h2><label for="temp">Adjust fan speed</lablel></h2>
+			<p><button><a href="/{{pin}}/low" style="color: blue" class "button1" role="button">Low</a></button>
+			<button><a href="/{{pin}}/medium" style="color: purple" class "button1" role="button">Medium</a></button>
+			<button><a href="/{{pin}}/high" style="color: green" class "button1" role="button">High</a></button></p>
+		{% endif %}		
+	{% endfor %}
+	
+	
+</body>
+</html>

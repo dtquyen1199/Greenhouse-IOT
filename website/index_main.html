@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>	
+</head>
+<body style="background-color:#F0F8FF;">
+<h1 align="center"; style="color: green; background-color: #ADD8E6;">Greenhouse control system</h1><br/>
+<h3 style="background-color: #FFFFE0; font-style: italic;">Last Update: {{lastDataTime}}</h2>
+<h2 style="color: #FFA07A">Temperature: {{lastTemperature}}&deg;C </h3>
+<h2 style="color: #66CDAA;" >Humidity: {{lastHumidity}}RH</h3>
+<h2 style="color: #800000;">Soil Moisture: {{latestSoilData}} low</h2>
+<h2 style="color: #FF4500;">Light Level: {{latestLightData}} high</h2><br/>
+
+<h2> Actuators</h2>
+	{% for pin in pins %}
+		<h3> {{pins[pin].name}}
+		{% if pins[pin].state == 1 %}
+			Status: <strong> on </strong>
+			<button><a href="/{{pin}}/off" style="color: red" class "button1" role="button">Turn off</a></button>
+		{% else %}
+			Status: <strong> off </strong></h2>
+			<button><a href="/{{pin}}/on" style="color: green" class "button2" role="button">Turn on</a></button></h3>
+		{% endif %}
+	{% endfor %}
+
+<h2>Commands</h2>
+<h3> Grenn LED: <a href="/{action1">TURN ON</a></h3>
+<h3> Grenn LED: <a href="/{action2">TURN OFF</a></h3>
+<h3> Red LED: <a href="/{action3">TURN ON</a></h3>
+<h3> Red LED: <a href="/{action4">TURN OFF</a></h3>
+<h3> Fan: <a href="/{action4">TURN OFF</a></h3>
+<h3> Fan: <a href="/{action4">TURN OFF</a></h3>
+
+	
+</body>
+</html>

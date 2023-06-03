@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <head>
+        <title>Greenhouse Project - Light Level</title>
+    </head>
+    <body>
+        <h1>Light Readings</h1>
+        <table style='border:1px solid black'>
+            <thead>
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Reading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ latestTime }}</td>
+                    <td>{{ latestReading }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h1>LED Control</h1>
+        <h2>Toggle Manual Mode</h2>
+        <p>Manual mode allows you to control if the led will be on or off and how bright it should be.</p>
+        <p>Disabling Manual Mode will control the led via how bright or dark it is</p>
+        <a href="/manualMode/on" class="btn btn block btn-lg btn-primary" role="button">Turn on</a><br/>
+        <a href="/manualMode/off" class="btn btn block btn-lg btn-default" role="button">Turn off</a>
+        
+        <h2>Toggle Buttons for LED</h2>
+        <p><strong>Warning:</strong> will NOT work if manual mode is off.</p>
+        {% for pin in pins %}
+            <p>{{ pins[pin].name }}
+            {% if pins[pin].state == 1 %}
+                is currently <strong>on</strong></h2><div class="row"><div class="col-md-2">
+                <a href="/{{pin}}/off" class="btn btn block btn-lg btn-default" role="button">Turn off</a></div></div>
+            {% else %}
+                is currently <strong>off</strong></h2><div class="row"><div class="col-md-2">
+                <a href="/{{pin}}/on" class="btn btn block btn-lg btn-primary" role="button">Turn on</a></div></div>
+            {% endif %}
+        {% endfor %}
+        </p>
+        <h2>Commands</h2>
+        <h3>LED pin 2: <a href="/action1">TURN ON</a></h3>
+        <h3>LED pin 2: <a href="/action2">TURN OFF</a></h3>
+    </body>
+</html>
